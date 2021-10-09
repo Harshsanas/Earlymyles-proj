@@ -1,11 +1,20 @@
-import axios from "axios";
-import {FETCH_DATA} from "./actionType"
+import {actionTypes} from "./actionType"
 
-export const fetchData =()=>async(dispatch)=>{
-    try{
-        let response = await axios.get("https://fakestoreapi.com/products");
-        dispatch({type: FETCH_DATA,payload: response.data})
-    }catch{
-        console.error("error");
-    }
-}
+export const setProducts = (products) => {
+  return {
+    type: actionTypes.SET_PRODUCTS,
+    payload: products,
+  };
+};
+
+export const selectedProduct = (product) => {
+  return {
+    type: actionTypes.SELECTED_PRODUCT,
+    payload: product,
+  };
+};
+export const removeSelectedProduct = () => {
+  return {
+    type: actionTypes.REMOVE_SELECTED_PRODUCT,
+  };
+};

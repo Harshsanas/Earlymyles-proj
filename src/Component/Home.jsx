@@ -1,12 +1,9 @@
 import axios from 'axios';
 import React,{useEffect, useState} from 'react'
-import { useDispatch } from 'react-redux';
-import{fetchData} from "../Redux/action"
 import styled from "styled-components"
-import { useSelector } from 'react-redux';
 
 const BUTTONCAT = styled.div`
-margin-top:20px;
+margin:50px;
 
   .categories-Section {
       display: flex;
@@ -27,22 +24,8 @@ margin-top:20px;
 
 export default function Home() {
 
-    const Cards=()=>{
-        const data=useSelector((state)=>state);
-
-        const dispatch = useDispatch();
-
-        console.log(data,"Data redux");
-
-        useEffect(()=>{
-            dispatch(fetchData())
-        },[])
-    
-    }
 
     const[buttonName,setButton]=useState("")
-
-
 
     useEffect(()=>{
         axios
@@ -61,7 +44,6 @@ export default function Home() {
         <BUTTONCAT>
           <div className="categories-Section">
             <button>ALL</button>
-
             {buttonName.data?.map((item) => {
               return (
                 <div key={item.id}>
@@ -70,7 +52,6 @@ export default function Home() {
               );
             })}
           </div>
-          
         </BUTTONCAT>
       </div>
     );
